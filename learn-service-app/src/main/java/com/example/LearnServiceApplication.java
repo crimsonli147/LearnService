@@ -7,5 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class LearnServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(LearnServiceApplication.class, args);
+        System.out.println("hello");
     }
 }
