@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>com.example.learn</groupId>
-        <artifactId>learn</artifactId>
+        <artifactId>LearnService</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath> <!-- 设置父POM的位置 -->
     </parent>

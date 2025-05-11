@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/learnService")
+@RequestMapping("/v1/demo")
 public class MyController {
-    @Autowired(required = false)
+    @Autowired
     private MyDelegate delegate;
 
-    @GetMapping("/get/message")
+    @GetMapping("/message/query")
     public Wrapper<String> getMessage() {
         return delegate.getMessage();
     }

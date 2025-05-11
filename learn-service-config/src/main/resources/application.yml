@@ -3,14 +3,45 @@ server:
 
 spring:
   application:
-    name: learn-service  # 微服务名
+    name: learn-service
+  redis:
+    redisson:
+      config:
+        clusterServersConfig:
+          nodeAddresses:
+            - "redis://127.0.0.1:7000"
+            - "redis://127.0.0.1:7001"
+            - "redis://127.0.0.1:7002"
+          password: "password"
+          slaveConnectionPoolSize: 64
+          masterConnectionPoolSize: 64
+          idleConnectionTimeout: 10000
+          connectTimeout: 5000
+          timeout: 3000
+          retryAttempts: 3
+          retryInterval: 1500
+          subscriptionsPerConnection: 5
+        threads: 16
+        nettyThreads: 32
+        codec: "org.redisson.codec.JsonJacksonCodec"
+
 #  datasource:
 #    url: jdbc:mysql://localhost:3306/mydb
 #    username: root
 #    password: password
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 #
-#logging:
-#  level:
-#    root: INFO
-#    com.example.learn: DEBUG
+logging:
+  level:
+    root: DEBUG
+
+feign:
+  client:
+    config:
+      default:  # 全局默认配置
+        connectTimeout: 3000
+        readTimeout: 8000
+        loggerLevel: basic
+      demo-service:  # 针对特定服务的配置（会覆盖default配置）
+        connectTimeout: 3000
+        readTimeout: 10000

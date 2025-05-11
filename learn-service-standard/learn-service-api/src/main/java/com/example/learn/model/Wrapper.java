@@ -3,14 +3,19 @@ package com.example.learn.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.Instant;
+
 @Setter
 @Getter
 public class Wrapper<T> {
     private int code;
     private String message;
     private T data;
+    private long timestamp;
 
-    private Wrapper() {}
+    private Wrapper() {
+        this.timestamp = Instant.now().toEpochMilli();  // 初始化时自动设置当前时间戳
+    }
 
     // 成功响应
     public static <T> Wrapper<T> success() {
